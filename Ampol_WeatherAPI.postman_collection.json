@@ -1,0 +1,66 @@
+{
+  "info": {
+    "_postman_id": "88c64272-e727-4f81-9c69-3b7ec5fa72aa",
+    "name": "Ampol_WeatherAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52960757",
+    "_collection_link": "https://go.postman.co/collection/52960757-88c64272-e727-4f81-9c69-3b7ec5fa72aa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GetSydneyWeather",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Paser response\r",
+              "const res = pm.response.json();\r",
+              "\r",
+              "//Extract the temparature in Celcius\r",
+              "const tempCelcius = res.current.temp_c;\r",
+              "\r",
+              "//Store in environment variables\r",
+              "pm.environment.set(\"Sydney_Temparature_in_Celcius\", tempCelcius)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.weatherapi.com/v1/current.json?key={{WEATHER_API_KEY}}&q=Sydney&aqi=no",
+          "protocol": "https",
+          "host": [
+            "api",
+            "weatherapi",
+            "com"
+          ],
+          "path": [
+            "v1",
+            "current.json"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{WEATHER_API_KEY}}"
+            },
+            {
+              "key": "q",
+              "value": "Sydney"
+            },
+            {
+              "key": "aqi",
+              "value": "no"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
