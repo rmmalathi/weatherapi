@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install Newman + HTML Extra Reporter
           command: |
-            npm install -g newman newman-reporter-htmlextra
+            sudo npm install -g newman newman-reporter-htmlextra
 
       - run:
           name: Run Postman Collection
