@@ -1,0 +1,32 @@
+version: 2.1
+
+jobs:
+  run-postman-tests:
+    docker:
+      - image: circleci/node:16
+    steps:
+      - checkout
+
+      - run:
+          name: Install Newman + HTML Extra Reporter
+          command: |
+            npm install -g newman newman-reporter-htmlextra
+
+      - run:
+          name: Run Postman Collection
+          command: |
+            mkdir -p test-results
+            newman run postman/C:/Local\Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol_WeatherAPI.postman_collection.json \
+              -e postman/C:/Local\Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol.postman_environment.json \
+              -r cli,htmlextra \
+              --reporter-htmlextra-export test-results/report.html
+
+      - store_artifacts:
+          path: test-results
+          destination: postman-test-results
+
+workflows:
+  version: 2
+  api-tests:
+    jobs:
+      - run-postman-tests
