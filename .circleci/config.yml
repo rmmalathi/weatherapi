@@ -16,8 +16,8 @@ jobs:
           name: Run Postman Collection
           command: |
             mkdir -p test-results
-            newman run postman/C:/Local\Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol_WeatherAPI.postman_collection.json \
-              -e postman/C:/Local\Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol.postman_environment.json \
+            newman run postman/C:/Local/Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol_WeatherAPI.postman_collection.json \
+              -e postman/C:/Local/Malathi Ramasamy/Work/Resume/2025/Ampol/Ampol_Test_Submissions/Ampol.postman_environment.json \
               -r cli,htmlextra \
               --reporter-htmlextra-export test-results/report.html
 
